@@ -14,4 +14,4 @@ if __name__ == '__main__':
     print_hi('PyCharm')
 
 
-print_hi('go team!')
+print_hi('bad team!')
