@@ -1,8 +1,9 @@
-# This is a sample Python script.
+# Webscraper for Networking Project
+# CNT 4104
+# Bailey Lewis, Michael Householder, Joshua Cowin
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
+# A webscraper to take in information and to upload them to a local database,
+#   to then finally be uploaded to a website.
 
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
