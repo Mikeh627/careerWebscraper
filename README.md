@@ -1,5 +1,5 @@
 # Webscraper for CNT 4104
-This program is a webscraper to pull information off of certain websites and acculmate the data on our own. This project has and will been written in Python.
+This program is a webscraper to pull information off of certain websites and acculmate the data on our own. This project has and will be written in Python.
 This project is created by Bailey Lewis, Michael Householder, and Joshua Cowan.
 
 
