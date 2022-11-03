@@ -19,8 +19,8 @@ import requests
 from requests.exceptions import HTTPError
 import sys
 
-linksFromSearch = {}
-
+listOfCompanies = {}
+listOfLocations = {}
 
 if __name__ == '__main__':
     for url in sys.argv[1:]:
@@ -45,12 +45,25 @@ if __name__ == '__main__':
 
         # For Companies
         for link in soup.findAll("a", class_='hidden-nested-link'):
+            x = 0
             companies = link.string
+            listOfCompanies[x] = companies
+            x += 1
         # For Location
         for link in soup.findAll("span", class_='job-search-card__location'):
+            x = 0
             location = link.string
+            listOfLocations[x] = location
+            x += 1
         with open("results.txt", "w") as namesfile:
-            namesfile.write(companies, location)
-            print(companies, location)
+            x = 0
+            y = 0
+            while x < listOfLocations.__len__():
+                data = (f"{companies}"+ f"{location}")
+                namesfile.write(data)
+                print(companies, location)
+                x += 1
+                y += 1
+
 
             # Command:  py main.py 'https://www.linkedin.com/jobs/search?keywords=Software%20Engineer&location=United%20States&geoId=&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=0'
