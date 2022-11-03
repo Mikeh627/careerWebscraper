@@ -50,15 +50,12 @@ if __name__ == '__main__':
 
         # For Companies
         for link in soup.findAll("a", class_='hidden-nested-link'):
-            print("wow!")
+            companies = link.string
         # For Location
         for link in soup.findAll("span", class_='job-search-card__location'):
-            text = link.string
-            text.replace('\n', '')
-            text.replace(' ', '')
-            text.strip()
-            with open("results.txt", "a") as namesfile:
-                namesfile.write(text)
-            print(text)
+            location = link.string
+        with open("results.txt", "w") as namesfile:
+            namesfile.write(companies, location)
+            print(companies, location)
 
             # Command:  py main.py 'https://www.linkedin.com/jobs/search?keywords=Software%20Engineer&location=United%20States&geoId=&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=0'
