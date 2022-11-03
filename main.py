@@ -20,12 +20,7 @@ from requests.exceptions import HTTPError
 import sys
 
 linksFromSearch = {}
-# sys allows us to grab arguments.
-# to install Beautiful Soup: File-->Settings-->Project Interpreter and "add package"
 
-# ----------REALLY BIG NOTE: When using terminal don't use Python3 just use py when doing commands----------
-# response.content = content returned from the browser
-# response.text = How requests changes it over to a string
 
 if __name__ == '__main__':
     for url in sys.argv[1:]:
