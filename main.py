@@ -19,8 +19,32 @@ import requests
 from requests.exceptions import HTTPError
 import sys
 
+#-----Selenium-----
+from selenium import webdriver
+from selenium.webdriver.support.select import Select
+from selenium.webdriver.common.by import By
+
+
 listOfCompanies = {}
 listOfLocations = {}
+
+def getLinkedIn():
+    driver = webdriver.Firefox()
+    driver.get("https://www.linkedin.com/jobs/search?keywords=Software%20Engineer&location=United%20States&geoId=&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=0")
+    assert "Page not found" not in driver.page_source
+    # XPath for Job title: Increment N starting from 1 to N
+    # //*[@id="main-content"]/section[2]/ul/li[N]/div/div[2]/h3
+    title = 'title'
+
+    # XPath for company: Increment N starting from 1 to N
+    # //*[@id="main-content"]/section[2]/ul/li[N]/div/div[2]/h4/a
+    company = 'company'
+
+    # Xpath for Location: Increment N starting from 1 to N
+    # //*[@id="main-content"]/section[2]/ul/li[N]/div/div[2]/div/span
+    location = 'location'
+
+    return (company, title, location)
 
 if __name__ == '__main__':
     for url in sys.argv[1:]:
@@ -63,4 +87,4 @@ if __name__ == '__main__':
 
 
 
-            # Command:  py main.py 'https://www.linkedin.com/jobs/search?keywords=Software%20Engineer&location=United%20States&geoId=&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=0'
+            # Command:  py main.py ''
