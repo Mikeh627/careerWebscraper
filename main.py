@@ -33,7 +33,7 @@ listOfMicroLocations = []
 listOfMicroJobTitles = []
 
 # Searching for Software Engineer Job listings in the U.S
-def getLinkedIn():
+def getLinkedIn(query):
     # Loading in chrome but it needs to be in incognito or you will need to be signed in or create a automated process
     # to sign in
     driver = webdriver.ChromeOptions()
@@ -44,7 +44,7 @@ def getLinkedIn():
 
     # XPath for Job title: Increment N starting from 1 to N
     # //*[@id="main-content"]/section[2]/ul/li[N]/div/div[2]/h3
-    for row in range(1, 5):
+    for row in range(1, query):
         rows = driver.find_elements(By.XPATH, "//*[@id='main-content']/section[2]/ul/li[" + str(row) + "]/div/div[2]/h3")
         for row_data in rows:
             #print(f"\n=====row_data {row_data.text}=====\n")
@@ -54,7 +54,7 @@ def getLinkedIn():
 
     # XPath for company: Increment N starting from 1 to N
     # //*[@id="main-content"]/section[2]/ul/li[N]/div/div[2]/h4/a
-    for row in range(1, 5):
+    for row in range(1, query):
         rows = driver.find_elements(By.XPATH, "//*[@id='main-content']/section[2]/ul/li[" + str(row) + "]/div/div[2]/h4")
         for row_data in rows:
             #print(f"\n=====row_data {row_data.text}=====\n")
@@ -64,7 +64,7 @@ def getLinkedIn():
 
     # Xpath for Location: Increment N starting from 1 to N
     # //*[@id="main-content"]/section[2]/ul/li[N]/div/div[2]/div/span
-    for row in range(1, 5):
+    for row in range(1, query):
         rows = driver.find_elements(By.XPATH, "//*[@id='main-content']/section[2]/ul/li[" + str(row) + "]/div/div[2]/div/span")
         for row_data in rows:
             #print(f"\n=====row_data {row_data.text}=====\n")
@@ -74,7 +74,7 @@ def getLinkedIn():
     print(listOfLocations)
 
 # Searching for Microsoft Job listings in the U.S.
-def getLinkedInMircosoft():
+def getLinkedInMircosoft(query):
     # Loading in chrome but it needs to be in incognito or you will need to be signed in or create a automated process
     # to sign in
     driver = webdriver.ChromeOptions()
@@ -86,7 +86,7 @@ def getLinkedInMircosoft():
 
     # XPath for Job title: Increment N starting from 1 to N
     # //*[@id="main-content"]/section[2]/ul/li[N]/div/div[2]/h3
-    for row in range(1, 5):
+    for row in range(1, query):
         rows = driver.find_elements(By.XPATH,
                                     "//*[@id='main-content']/section[2]/ul/li[" + str(row) + "]/div/div[2]/h3")
         for row_data in rows:
@@ -97,7 +97,7 @@ def getLinkedInMircosoft():
 
     # XPath for company: Increment N starting from 1 to N
     # //*[@id="main-content"]/section[2]/ul/li[N]/div/div[2]/h4/a
-    for row in range(1, 5):
+    for row in range(1, query):
         rows = driver.find_elements(By.XPATH,
                                     "//*[@id='main-content']/section[2]/ul/li[" + str(row) + "]/div/div[2]/h4")
         for row_data in rows:
@@ -108,7 +108,7 @@ def getLinkedInMircosoft():
 
     # Xpath for Location: Increment N starting from 1 to N
     # //*[@id="main-content"]/section[2]/ul/li[N]/div/div[2]/div/span
-    for row in range(1, 5):
+    for row in range(1, query):
         rows = driver.find_elements(By.XPATH,
                                     "//*[@id='main-content']/section[2]/ul/li[" + str(row) + "]/div/div[2]/div/span")
         for row_data in rows:
@@ -119,6 +119,13 @@ def getLinkedInMircosoft():
     print(listOfMicroLocations)
 
 if __name__ == '__main__':
-    getLinkedIn()
+    query = int(input("How many results do you want?: "))
+    query += 1
+    getLinkedIn(query)
     print("------------------Loading next function------------------")
-    getLinkedInMircosoft()
+    getLinkedInMircosoft(query)
+
+    # Looping through the list to write to the file
+
+
+    # From the file we go to the database
