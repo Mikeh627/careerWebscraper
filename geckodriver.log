@@ -1,0 +1,27 @@
+1668695332550	geckodriver	INFO	Listening on 127.0.0.1:63438
+1668695335638	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63439" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\BAILE\\AppData\\Local\\Temp\\rust_mozprofilejpWpf9"
+1668695336238	Marionette	INFO	Marionette enabled
+1668695336244	Marionette	INFO	Listening on port 63453
+WebDriver BiDi listening on ws://127.0.0.1:63439
+Read port: 63453
+1668695336550	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\BAILE\\AppData\\Local\\Temp\\rust_mozprofilejpWpf9\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:63439/devtools/browser/bd9854fc-365f-4eb1-9803-5353b033b332
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.linkedin.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.linkedin.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.linkedin.com."
+1668695342446	Marionette	INFO	Stopped listening on port 63453
+[Parent 3028, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+JavaScript error: resource://services-settings/Utils.jsm, line 239: TypeError: NetworkError: Network request failed
+1668695394771	geckodriver	INFO	Listening on 127.0.0.1:63522
+1668695397841	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63523" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\BAILE\\AppData\\Local\\Temp\\rust_mozprofileduj2fF"
+1668695398139	Marionette	INFO	Marionette enabled
+1668695398147	Marionette	INFO	Listening on port 63534
+Read port: 63534
+WebDriver BiDi listening on ws://127.0.0.1:63523
+1668695398226	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\BAILE\\AppData\\Local\\Temp\\rust_mozprofileduj2fF\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:63523/devtools/browser/11b2cecd-64ff-4cd0-a452-22df53fb3821
+JavaScript warning: https://static-exp1.licdn.com/sc/h/7xdvzkd55eatymvqx7oygyxqc, line 2: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1668695417343	Marionette	INFO	Stopped listening on port 63534
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
