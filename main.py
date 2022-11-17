@@ -118,6 +118,7 @@ def getLinkedInMircosoft(query):
     driver.close()
     print(listOfMicroLocations)
 
+# Main
 if __name__ == '__main__':
     query = int(input("How many results do you want?: "))
     query += 1
