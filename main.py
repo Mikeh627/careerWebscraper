@@ -14,17 +14,15 @@
 #   Format:: Company: Position: Location: Pay
 #   https://www.linkedin.com/jobs/microsoft-software-engineer-jobs?position=1&pageNum=0
 
-from bs4 import BeautifulSoup
-import requests
-from requests.exceptions import HTTPError
-import sys
-
+# Blocking warning because its annoying
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 #-----Selenium-----
 from selenium import webdriver
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.by import By
 
-
+# When searching, we are going to load into a list, to go to a file and database.
 listOfCompanies = []
 listOfLocations = []
 listOfJobTitles = []
