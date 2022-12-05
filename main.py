@@ -25,17 +25,26 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.by import By
 
 # When searching, we are going to load into a list, to go to a file and database.
+# List for Software Engineer Jobs in the U.S.
 softwareEngineerCompanies = []
 softwareEngineerLocations = []
 softwareEngineerTitles = []
 
+# List for Estero Software Engineer Jobs in the U.S.
+EsteroSoftwareEngineerCompanies = []
+EsteroSoftwareEngineerLocations = []
+EsteroSoftwareEngineerTitles = []
+
+# List for general Microsoft Jobs
 generalMicrosoftSearch = []
 generalMicrosoftSearchLocations = []
 generalMicrosoftSearchTitles = []
 
-generalMicrosoftEngineerSearch = []
-generalMicrosoftEngineerLocations = []
-generalMicrosoftEngineerTitles = []
+# Lists for Microsoft Engineer Jobs
+MicrosoftEngineerSearch = []
+MicrosoftEngineerLocations = []
+MicrosoftEngineerTitles = []
+
 
 # Searching for Software Engineer Job listings in the U.S
 def getLinkedIn(query):
@@ -81,6 +90,51 @@ def getLinkedIn(query):
 
     driver.close()
     print(softwareEngineerLocations)
+
+# Searching for Software Engineer Job listings in Estero
+def getEsteroLinkedIn(query):
+    # Loading in chrome but it needs to be in incognito or you will need to be signed in or create a automated process
+    # to sign in
+    driver = webdriver.ChromeOptions()
+    driver.add_argument("--incognito")
+    driver = webdriver.Chrome(chrome_options=driver)
+    driver.get(
+        "https://www.linkedin.com/jobs/search?keywords=Software%20Engineer&location=Estero%2C%20Florida%2C%20United%20States&geoId=103774310&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=0")
+    assert "Page not found" not in driver.page_source
+
+    # XPath for Job title: Increment N starting from 1 to N
+    # //*[@id="main-content"]/section[2]/ul/li[N]/div/div[2]/h3
+    for row in range(1, query):
+        rows = driver.find_elements(By.XPATH,
+                                    "//*[@id='main-content']/section[2]/ul/li[" + str(row) + "]/div/div[2]/h3")
+        for row_data in rows:
+            # print(f"\n=====row_data {row_data.text}=====\n")
+            EsteroSoftwareEngineerTitles.append(row_data.text)
+
+    print(EsteroSoftwareEngineerTitles)
+
+    # XPath for company: Increment N starting from 1 to N
+    # //*[@id="main-content"]/section[2]/ul/li[N]/div/div[2]/h4/a
+    for row in range(1, query):
+        rows = driver.find_elements(By.XPATH,
+                                    "//*[@id='main-content']/section[2]/ul/li[" + str(row) + "]/div/div[2]/h4")
+        for row_data in rows:
+            # print(f"\n=====row_data {row_data.text}=====\n")
+            EsteroSoftwareEngineerCompanies.append(row_data.text)
+
+    print(EsteroSoftwareEngineerCompanies)
+
+    # Xpath for Location: Increment N starting from 1 to N
+    # //*[@id="main-content"]/section[2]/ul/li[N]/div/div[2]/div/span
+    for row in range(1, query):
+        rows = driver.find_elements(By.XPATH,
+                                    "//*[@id='main-content']/section[2]/ul/li[" + str(row) + "]/div/div[2]/div/span[1]")
+        for row_data in rows:
+            # print(f"\n=====row_data {row_data.text}=====\n")
+            EsteroSoftwareEngineerLocations.append(row_data.text)
+
+    driver.close()
+    print(EsteroSoftwareEngineerLocations)
 
 
 # Searching for Microsoft Job listings in the U.S.
@@ -128,6 +182,8 @@ def getLinkedInMircosoft(query):
     driver.close()
     print(generalMicrosoftSearchLocations)
 
+
+# Searching for Microsoft Software Engineer Jobs
 def getLinkedInMircosoftEngineer(query):
     # Loading in chrome but it needs to be in incognito or you will need to be signed in or create a automated process
     # to sign in
@@ -145,9 +201,9 @@ def getLinkedInMircosoftEngineer(query):
                                     "//*[@id='main-content']/section[2]/ul/li[" + str(row) + "]/div/div[2]/h3")
         for row_data in rows:
             # print(f"\n=====row_data {row_data.text}=====\n")
-            generalMicrosoftEngineerTitles.append(row_data.text)
+            MicrosoftEngineerTitles.append(row_data.text)
 
-    print(generalMicrosoftEngineerTitles)
+    print(MicrosoftEngineerTitles)
 
     # XPath for company: Increment N starting from 1 to N
     # //*[@id="main-content"]/section[2]/ul/li[N]/div/div[2]/h4/a
@@ -156,9 +212,9 @@ def getLinkedInMircosoftEngineer(query):
                                     "//*[@id='main-content']/section[2]/ul/li[" + str(row) + "]/div/div[2]/h4")
         for row_data in rows:
             # print(f"\n=====row_data {row_data.text}=====\n")
-            generalMicrosoftEngineerSearch.append(row_data.text)
+            MicrosoftEngineerSearch.append(row_data.text)
 
-    print(generalMicrosoftEngineerSearch)
+    print(MicrosoftEngineerSearch)
 
     # Xpath for Location: Increment N starting from 1 to N
     # //*[@id="main-content"]/section[2]/ul/li[N]/div/div[2]/div/span
@@ -167,28 +223,39 @@ def getLinkedInMircosoftEngineer(query):
                                     "//*[@id='main-content']/section[2]/ul/li[" + str(row) + "]/div/div[2]/div/span[1]")
         for row_data in rows:
             # print(f"\n=====row_data {row_data.text}=====\n")
-            generalMicrosoftEngineerLocations.append(row_data.text)
+            MicrosoftEngineerLocations.append(row_data.text)
 
     driver.close()
-    print(generalMicrosoftEngineerLocations)
+    print(MicrosoftEngineerLocations)
 
 
 if __name__ == '__main__':
     query = int(input("How many results do you want?: "))
     query += 1
-    print("------------------General Software Engineering Jobs------------------")
+    print("------------------U.S. Software Engineering Jobs------------------")
     getLinkedIn(query)
+    print("------------------Estero Software Engineering Jobs------------------")
+    getEsteroLinkedIn(query)
     print("------------------General Microsoft Jobs------------------")
     getLinkedInMircosoft(query)
     print("------------------General Microsoft Engineering Jobs------------------")
     getLinkedInMircosoftEngineer(query)
-    # Looping through the list to write to the file
 
-    # General software engineer search into a file
+    # Looping through the list to write to the file
+    # U.S. software engineer search into a file
     f = open("SoftwareEngineerSearch.txt", "w")
     position = 0
     for x in range(len(softwareEngineerCompanies)):
         line = f"Company: {softwareEngineerCompanies[position]}      Location: {softwareEngineerLocations[x]}      Title: {softwareEngineerTitles[x]} \n"
+        f.write(line)
+        position += 1
+    f.close()
+
+    # Estero software engineer search into a file
+    f = open("EsteroSoftwareEngineerSearch.txt", "w")
+    position = 0
+    for x in range(len(softwareEngineerCompanies)):
+        line = f"Company: {EsteroSoftwareEngineerCompanies[position]}      Location: {EsteroSoftwareEngineerLocations[x]}      Title: {EsteroSoftwareEngineerTitles[x]} \n"
         f.write(line)
         position += 1
     f.close()
@@ -206,7 +273,7 @@ if __name__ == '__main__':
     f = open("MicrosoftEngineeringSearch.txt", "w")
     position = 0
     for x in range(len(softwareEngineerCompanies)):
-        line = f"Company: {generalMicrosoftEngineerSearch[position]}      Location: {generalMicrosoftEngineerLocations[x]}      Title: {generalMicrosoftEngineerTitles[x]} \n"
+        line = f"Company: {MicrosoftEngineerSearch[position]}      Location: {MicrosoftEngineerLocations[x]}      Title: {MicrosoftEngineerTitles[x]} \n"
         f.write(line)
         position += 1
     f.close()
