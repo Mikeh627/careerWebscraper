@@ -23,6 +23,8 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 from selenium import webdriver
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.by import By
+#-----SQLite-----
+import sqlite3
 
 # When searching, we are going to load into a list, to go to a file and database.
 # List for Software Engineer Jobs in the U.S.
@@ -278,4 +280,29 @@ if __name__ == '__main__':
         position += 1
     f.close()
 
-    # From the file we go to the database
+    # From the file we go to the database, aiming for mass row creation (or tuple)
+def insertCareersIntoTable(list)
+    try:
+    
+        sqliteCon = sqlite3.connect('CareerWebscraper')
+        cursor = sqliteCon.cursor()
+        #print ("Database connection is a go")
+        
+        #Defining the row 
+        sqlite_insert_careers = """INSERT INTO job (Job Title, Location, Company)
+        Values (?, ?, ?);"""
+
+        cursor.executemany(sqlite_insert_careers, SoftwareEngineerCompanies)
+        sqliteConnection.commit()
+        print("Total", cursor.rowcount, "Records Put in")
+        sqliteCon.commit()
+        
+    except sqlite3.Erroras error:
+        print("Failed to insert multiple records into sqlitetable", error)
+    finally:
+            if sqliteCon:
+                sqliteCon.close()
+                print("SQLite Connection is closed, ready to go again")
+                
+InsertCareersIntoTable(SoftwareEngineeringCompanies)
+ 
