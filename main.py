@@ -283,8 +283,7 @@ if __name__ == '__main__':
     # From the file we go to the database, aiming for mass row creation (or tuple)
 def insertCareersIntoTable(list)
     try:
-    
-        sqliteCon = sqlite3.connect('CareerWebscraper')
+        sqliteCon = sqlite3.connect('Career_Webscraper_Database_1')
         cursor = sqliteCon.cursor()
         #print ("Database connection is a go")
         
