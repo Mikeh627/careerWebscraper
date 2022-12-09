@@ -279,7 +279,8 @@ if __name__ == '__main__':
         f.write(line)
         position += 1
     f.close()
-
+"""
+Can establish a database connection with cursor and .connect, this is an attempt at bulk, but it didn't work out
     # From the file we go to the database, aiming for mass row creation (or tuple)
 def insertCareersIntoTable(list)
     try:
@@ -304,4 +305,4 @@ def insertCareersIntoTable(list)
                 print("SQLite Connection is closed, ready to go again")
                 
 InsertCareersIntoTable(SoftwareEngineeringCompanies)
- 
+"""
